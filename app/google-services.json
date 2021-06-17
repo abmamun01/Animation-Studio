@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "553009815353",
+    "project_id": "animation-studio-95449",
+    "storage_bucket": "animation-studio-95449.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553009815353:android:cd43ccd8edd6c89dbcd2e8",
+        "android_client_info": {
+          "package_name": "com.mamunsproject.animationstudio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553009815353-3k7cev6k350ojkov14r99k8k525ug84o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mamunsproject.animationstudio",
+            "certificate_hash": "eb7e172152e3b060cde13b30e01ea14fb3064bff"
+          }
+        },
+        {
+          "client_id": "553009815353-0mfiaufptoc6hopu7j5rg7hhvu2m6lpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqszj6MbUOdXEMm3cIe0u6BwFc26_y2hs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553009815353-0mfiaufptoc6hopu7j5rg7hhvu2m6lpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

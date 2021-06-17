@@ -3,16 +3,28 @@ package com.mamunsproject.animationstudio.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.mamunsproject.animationstudio.Adapter.SliderAdapter;
 import com.mamunsproject.animationstudio.Adapter.VIdeoAdapter;
 import com.mamunsproject.animationstudio.Model.ResponseVideo;
@@ -25,6 +37,8 @@ import com.mamunsproject.animationstudio.Utils.MyConsts;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,15 +55,19 @@ public class HomeFragment extends Fragment {
     ArrayList<Video> arrayListVideo;
     ApiInterface apiInterface;
     ProgressBar progressBar;
-
+    FirebaseFirestore firebaseFirestore;
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerMain);
+
+        recyclerView = view.findViewById(R.id.recyclerMain);
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
@@ -58,23 +76,47 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(vIdeoAdapter);
 
 
+        DocumentReference documentReference = firebaseFirestore
+                .collection("AllCartoonPlayListKey").document("AllCartoonID");
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
 
+                    String key = documentSnapshot.getString("key");
+                    //getVideos(key);
+                }
+            }
+        });
 
 
         SliderView sliderView = view.findViewById(R.id.imageSlider);
 
         List<SliderModel> list = new ArrayList<>();
 
-        list.add(new SliderModel("https://cdn.pixabay.com/photo/2012/04/01/19/34/toothbrush-24232__340.png"));
-        list.add(new SliderModel("https://cdn.pixabay.com/photo/2016/12/05/21/55/super-woman-1885016__340.jpg"));
-        list.add(new SliderModel("https://cdn.pixabay.com/photo/2013/07/13/13/14/tiger-160601__340.png"));
-        list.add(new SliderModel("https://c4.wallpaperflare.com/wallpaper/696/671/720/tom-and-jerry-greatests-chases-wallpaper-hd-for-desktop-full-screen-2560%C3%971600-wallpaper-preview.jpg"));
-        list.add(new SliderModel("https://c4.wallpaperflare.com/wallpaper/779/701/199/tom-and-jerry-playing-singing-songs-island-palm-trees-beautiful-wallpaper-hd-for-desktop-1920x1200d-for-desktop-1920%C3%971200-wallpaper-preview.jpg"));
-        list.add(new SliderModel("https://c4.wallpaperflare.com/wallpaper/779/701/199/tom-and-jerry-playing-singing-songs-island-palm-trees-beautiful-wallpaper-hd-for-desktop-1920x1200d-for-desktop-1920%C3%971200-wallpaper-preview.jpg"));
-
-
         SliderAdapter adapter = new SliderAdapter(getContext(), list);
         sliderView.setSliderAdapter(adapter);
+
+
+        firebaseFirestore.collection("SliderImage")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        //ager data delete kore notun data add korbe
+                        list.clear();
+                        for (DocumentSnapshot snapshot:value.getDocuments()  ){
+
+                            SliderModel model= snapshot.toObject(SliderModel.class);
+                            assert model != null;
+                            model.setId(snapshot.getId());
+                            list.add(model);
+
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
 
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
@@ -85,7 +127,6 @@ public class HomeFragment extends Fragment {
         sliderView.startAutoCycle();
 
         getVideos();
-
 
 
         return view;
