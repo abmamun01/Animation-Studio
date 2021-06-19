@@ -1,5 +1,6 @@
 package com.mamunsproject.animationstudio;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -45,6 +47,8 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +56,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     Toolbar toolbar;
     BubbleNavigationConstraintView bubbleNavigationConstraintView;
@@ -81,21 +85,25 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (position) {
                     case 0:
+                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                         transaction.replace(R.id.fragmentContainerID, new HomeFragment());
                         transaction.commit();
                         break;
 
                     case 1:
+                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                         transaction.replace(R.id.fragmentContainerID, new AnimationFragment());
                         transaction.commit();
                         break;
 
                     case 2:
+                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                         transaction.replace(R.id.fragmentContainerID, new LearningFragment());
                         transaction.commit();
                         break;
 
                     case 3:
+                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
                         transaction.replace(R.id.fragmentContainerID, new CartoonCategory());
                         transaction.commit();
                         break;
@@ -124,39 +132,7 @@ public class MainActivity extends AppCompatActivity {
 //===============================================FB BANNER AD============================================
 
 
-//        bottomNavigationView = findViewById(R.id.bottomBar);
-//
-//
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerID,new Home_Fragment()).commit();
 
-
-//        bottomNavigationView.setOnItemSelectedListener(new OnItemSelectedListener() {
-//            @Override
-//            public boolean onItemSelect(int i) {
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//
-//                switch (i) {
-//
-//
-//                    case 0:
-//                        transaction.replace(R.id.fragmentContainerID, new Home_Fragment());
-//                        transaction.commit();
-//                        break;
-//
-//
-//                    case 1:
-//                        transaction.replace(R.id.fragmentContainerID, new PlayList_Fragment());
-//                        transaction.commit();
-//                        break;
-//
-//
-//                }
-//
-//                return false;
-//
-//            }
-//
-//        });
 
 
     }
@@ -211,39 +187,28 @@ public class MainActivity extends AppCompatActivity {
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerOpened(View drawerView) {
-                updateCounter(nav_view);
+
                 super.onDrawerOpened(drawerView);
             }
         };
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(final MenuItem item) {
                 Toast.makeText(getApplicationContext(), item.getTitle() + " Selected", Toast.LENGTH_SHORT).show();
+
+                if (item.getItemId()==0) {
+                    startActivity(new Intent(getApplicationContext(),PlayListPlayer.class));
+                }
                 drawer.closeDrawers();
                 return true;
             }
         });
 
-        // open drawer at start
-        //drawer.openDrawer(GravityCompat.START);
-        updateCounter(nav_view);
     }
 
-    private void updateCounter(NavigationView nav) {
-        Menu m = nav.getMenu();
-        ((TextView) m.findItem(R.id.nav_all_inbox).getActionView().findViewById(R.id.text)).setText("75");
-        ((TextView) m.findItem(R.id.nav_inbox).getActionView().findViewById(R.id.text)).setText("68");
 
-        TextView badgePrioInbx = (TextView) m.findItem(R.id.nav_priority_inbox).getActionView().findViewById(R.id.text);
-        badgePrioInbx.setText("3 new");
-        badgePrioInbx.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
 
-        TextView badgeSocial = (TextView) m.findItem(R.id.nav_social).getActionView().findViewById(R.id.text);
-        badgeSocial.setText("51 new");
-        badgeSocial.setBackgroundColor(getResources().getColor(R.color.green_500));
-
-        ((TextView) m.findItem(R.id.nav_spam).getActionView().findViewById(R.id.text)).setText("13");
-    }
 }

@@ -83,7 +83,7 @@ public class PlayListPlayer extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseVideo> call, Response<ResponseVideo> response) {
 
-                Toast.makeText(PlayListPlayer.this, key, Toast.LENGTH_SHORT).show();
+
                 ResponseVideo responseVideo = response.body();
                 if (responseVideo != null) {
                     animationView.setVisibility(View.GONE);

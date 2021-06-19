@@ -1,14 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.CartoonCategory">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.CartoonCategory"
+    android:padding="10dp"
+    android:background="@color/grey_200">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
 
-</FrameLayout>
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10mdp"
+    android:id="@+id/hindiCartoonID"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView4a"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cartoon2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="20dp"
+        app:riv_mutate_background="true" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayouta"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:background="@drawable/corner_radius"
+        android:backgroundTint="#A9000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hindi Cartoon"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_26font_mdp"
+        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView4a"
+        app:layout_constraintStart_toStartOf="@+id/roundedImageView4a"
+        app:layout_constraintTop_toTopOf="@+id/roundedImageView4a" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10mdp"
+    android:id="@+id/arabicCartoonID"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView4s"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/cartoon4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="20dp"
+        app:riv_mutate_background="true" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayouts"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:background="@drawable/corner_radius"
+        android:backgroundTint="#A9000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arabic Cartoon"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_26font_mdp"
+        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView4s"
+        app:layout_constraintStart_toStartOf="@+id/roundedImageView4s"
+        app:layout_constraintTop_toTopOf="@+id/roundedImageView4s" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10mdp"
+    android:id="@+id/tom_and_jerryCartoonID"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView4ss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tom2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="20dp"
+        app:riv_mutate_background="true" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:background="@drawable/corner_radius"
+        android:backgroundTint="#A9000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tom &amp; Jerry"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_26font_mdp"
+        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView4ss"
+        app:layout_constraintStart_toStartOf="@+id/roundedImageView4ss"
+        app:layout_constraintTop_toTopOf="@+id/roundedImageView4ss" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10mdp"
+    android:id="@+id/chottaBheemCartoonID"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView4d"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/chottabheem"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="20dp"
+        app:riv_mutate_background="true" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:background="@drawable/corner_radius"
+        android:backgroundTint="#A9000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chotta Bheem"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_26font_mdp"
+        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView4d"
+        app:layout_constraintStart_toStartOf="@+id/roundedImageView4d"
+        app:layout_constraintTop_toTopOf="@+id/roundedImageView4d" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10mdp"
+    android:id="@+id/oggyandCoakroachCartoonID"
+    >
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView4da"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/oggy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="20dp"
+        app:riv_mutate_background="true" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutda"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:background="@drawable/corner_radius"
+        android:backgroundTint="#A9000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OGGY&amp;Coakroach"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_24font_mdp"
+        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView4da"
+        app:layout_constraintStart_toStartOf="@+id/roundedImageView4da"
+        app:layout_constraintTop_toTopOf="@+id/roundedImageView4da" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_10mdp"
+    android:id="@+id/bentenCartoonID">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/roundedImageView4daa"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ben10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="#333333"
+        app:riv_border_width="2dip"
+        app:riv_corner_radius="20dp"
+
+        app:riv_mutate_background="true" />
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutdaa"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130mdp"
+        android:background="@drawable/corner_radius"
+        android:backgroundTint="#A9000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BEN 10"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_24font_mdp"
+        android:fontFamily="@font/autour_one"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roundedImageView4daa"
+        app:layout_constraintStart_toStartOf="@+id/roundedImageView4daa"
+        app:layout_constraintTop_toTopOf="@+id/roundedImageView4daa" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

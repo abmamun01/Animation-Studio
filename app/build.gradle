@@ -75,6 +75,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
     implementation 'com.github.SMehranB:GlowButton:2.0.1'
- //   implementation 'me.timos.thuanle:fb-native-ad-adapter:latest.version'
+    implementation 'com.github.mohammadatif:Animatoo:master'
+
 
 }

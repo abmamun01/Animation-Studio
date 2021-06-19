@@ -39,7 +39,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/home_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:layout_height="@dimen/_42mdp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
     <com.gauravk.bubblenavigation.BubbleNavigationConstraintView
         android:id="@+id/top_navigation_constraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_43mdp"
         android:background="@color/white"
         android:elevation="4dp"
         android:padding="5dp"
@@ -88,7 +88,7 @@
             app:layout_constraintEnd_toStartOf="@+id/c_item_restas"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="5dp" />
+            app:layout_constraintTop_toTopOf="@+id/c_item_restas" />
 
 
         <com.gauravk.bubblenavigation.BubbleToggleView
@@ -105,7 +105,7 @@
             app:layout_constraintEnd_toStartOf="@+id/c_item_restad"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/c_item_resta"
-            tools:layout_editor_absoluteY="5dp" />
+            app:layout_constraintTop_toTopOf="@+id/c_item_restad" />
 
 
         <com.gauravk.bubblenavigation.BubbleToggleView
@@ -122,7 +122,7 @@
             app:layout_constraintEnd_toStartOf="@+id/c_item_restaf"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/c_item_restas"
-            tools:layout_editor_absoluteY="5dp" />
+            app:layout_constraintTop_toTopOf="@+id/c_item_restaf" />
 
 
         <com.gauravk.bubblenavigation.BubbleToggleView
@@ -136,10 +136,11 @@
             app:bt_padding="7dp"
             app:bt_title="Category"
             app:bt_titlePadding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/c_item_restad"
-            tools:layout_editor_absoluteY="5dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <!-- Add more child items here - max upto 5 -->

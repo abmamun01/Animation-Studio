@@ -62,7 +62,6 @@ public class SliderAdapter extends
                 @Override
                 public void onClick(View v) {
 
-                    Toast.makeText(context,  SliderModel.getplaylist(), Toast.LENGTH_SHORT).show();;
                     String plalistId=SliderModel.getplaylist();
 
                     Intent intent = new Intent(context, PlayListPlayer.class);

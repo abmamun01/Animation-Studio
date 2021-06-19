@@ -3,20 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-        <item
-            android:id="@+id/nav_home"
-            android:title="Home"
-            android:icon="@drawable/ic_home"/>
-        <item
-            android:id="@+id/nav_request"
-            android:title="Request a Cartoon"
-            android:icon="@drawable/ic_request"/>
+        <group>
+                <item
+                    android:id="@+id/nav_home"
+                    android:title="Home"
+                    android:icon="@drawable/ic_home"/>
+                <item
+                    android:id="@+id/nav_request"
+                    android:title="Request a Cartoon"
+                    android:icon="@drawable/ic_request"/>
 
-        <item
-            android:id="@+id/nav_about"
-            android:title="About"
-            android:icon="@drawable/ic_info"/>
+                <item
+                    android:id="@+id/nav_about"
+                    android:title="About"
+                    android:icon="@drawable/ic_info"/>
 
+
+        </group>
 
 
 </menu>

@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginTop="8dp"
-    app:cardElevation="5dp"
-    app:cardCornerRadius="20dp"
-
+    android:layout_marginStart="14dp"
+    android:layout_marginEnd="14dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="4dp"
     >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="@dimen/_210mdp"
         app:cardBackgroundColor="#FEFEFE"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="5dp"
+        android:layout_margin="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/iv_item_cover"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="@dimen/_155mdp"
                 android:scaleType="centerCrop"
                 app:riv_corner_radius="20dp" />
             <!--
@@ -50,7 +50,7 @@
                 android:maxLines="2"
                 android:text="Best Of Animation ?"
                 android:textColor="@color/black"
-                android:textSize="17sp" />
+                android:textSize="@dimen/_14font_mdp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -69,71 +69,5 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--android:layout_width="match_parent"-->
-<!--android:layout_height="wrap_content">-->
-
-<!--<LinearLayout-->
-<!--    android:id="@+id/l1_item_video"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:orientation="vertical">-->
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:id="@+id/cv_item_video"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:cardCornerRadius="2dp"-->
-<!--        app:cardElevation="2dp"-->
-<!--        app:cardUseCompatPadding="true">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <RelativeLayout-->
-<!--                android:id="@+id/relativeTranstionId"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="190dp"-->
-<!--                android:background="#cdcd"-->
-<!--                android:transitionName="playerTransition">-->
-
-<!--                <ImageView-->
-<!--                    android:layout_width="50dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_centerInParent="true"-->
-<!--                    android:src="@mipmap/ic_launcher" />-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/iv_item_cover"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:scaleType="centerCrop" />-->
 
 
-<!--            </RelativeLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical"-->
-<!--                android:padding="15dp">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/tv_item_title"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Video Title Here"-->
-<!--                    android:textSize="20sp"-->
-<!--                    android:textStyle="bold" />-->
-
-
-<!--            </LinearLayout>-->
-
-<!--        </LinearLayout>-->
-<!--    </androidx.cardview.widget.CardView>-->
-
-<!--</LinearLayout>-->
-<!--</RelativeLayout>-->

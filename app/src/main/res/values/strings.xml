@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AnimationStudio</string>
+    <string name="app_name">Animation Studio</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open</string>
