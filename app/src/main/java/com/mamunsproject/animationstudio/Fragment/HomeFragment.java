@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -54,8 +56,9 @@ public class HomeFragment extends Fragment {
     VIdeoAdapter vIdeoAdapter;
     ArrayList<Video> arrayListVideo;
     ApiInterface apiInterface;
-    ProgressBar progressBar;
-    FirebaseFirestore firebaseFirestore;
+    LottieAnimationView animationView;
+
+    public static FirebaseFirestore firebaseFirestore= FirebaseFirestore.getInstance();
     RecyclerView recyclerView;
 
     @Override
@@ -64,39 +67,48 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-
+        animationView=view.findViewById(R.id.animationView);
         recyclerView = view.findViewById(R.id.recyclerMain);
-        firebaseFirestore = FirebaseFirestore.getInstance();
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-
         arrayListVideo = new ArrayList<>();
         vIdeoAdapter = new VIdeoAdapter(getContext(), arrayListVideo);
         recyclerView.setAdapter(vIdeoAdapter);
 
 
-        DocumentReference documentReference = firebaseFirestore
-                .collection("AllCartoonPlayListKey").document("AllCartoonID");
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        DocumentReference documentReference=firebaseFirestore.
+                collection("AllCartoonPlayListKey").document("AllCartoonID");
+
+
+        documentReference
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
 
-                    String key = documentSnapshot.getString("key");
-                    //getVideos(key);
+                if (documentSnapshot.exists()){
+
+                    String key=documentSnapshot.getString( "AllCartoonID");
+                    getVideos(key);
+                    Log.d("TAGD", "onSuccess: "+key);
+
+
+                }else {
+                    Toast.makeText(getContext(), "Does'nt Exist", Toast.LENGTH_SHORT).show();
                 }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Toast.makeText(getContext(), "Failed firestore!", Toast.LENGTH_SHORT).show();
             }
         });
 
 
         SliderView sliderView = view.findViewById(R.id.imageSlider);
-
         List<SliderModel> list = new ArrayList<>();
-
         SliderAdapter adapter = new SliderAdapter(getContext(), list);
         sliderView.setSliderAdapter(adapter);
-
 
         firebaseFirestore.collection("SliderImage")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -111,7 +123,6 @@ public class HomeFragment extends Fragment {
                             assert model != null;
                             model.setId(snapshot.getId());
                             list.add(model);
-
                         }
                         adapter.notifyDataSetChanged();
                     }
@@ -126,17 +137,16 @@ public class HomeFragment extends Fragment {
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
         sliderView.startAutoCycle();
 
-        getVideos();
 
 
         return view;
 
     }
 
-    private void getVideos() {
+    private void getVideos(String key) {
 
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<ResponseVideo> callVideo = apiInterface.getAllVideos(300, MyConsts.CHOTA_BHEEM
+        Call<ResponseVideo> callVideo = apiInterface.getAllVideos(300, key
                 , MyConsts.APIKEY);
 
         callVideo.enqueue(new Callback<ResponseVideo>() {
@@ -145,7 +155,7 @@ public class HomeFragment extends Fragment {
 
                 ResponseVideo responseVideo = response.body();
                 if (responseVideo != null) {
-                    // progressBar.setVisibility(View.GONE);
+                    animationView.setVisibility(View.GONE);
                     if (responseVideo.items.size() > 0) {
                         for (int i = 0; i < responseVideo.items.size(); i++) {
                             arrayListVideo.add(responseVideo.items.get(i));

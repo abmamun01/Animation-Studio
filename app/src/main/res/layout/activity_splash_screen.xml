@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.AnimationFragment">
+    tools:context=".Splash_Screen">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/animationRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:nestedScrollingEnabled="true"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
@@ -22,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:layout_centerInParent="true"
-        app:lottie_rawRes="@raw/loading2" />
+        app:lottie_rawRes="@raw/cartoonlottie" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

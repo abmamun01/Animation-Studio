@@ -1,53 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.LearningFragment">
+    tools:context=".Fragment.LearningFragment"
+    android:scrollbars="none"
+    >
 
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_250mdp"
-        app:cardElevation="5dp"
-        android:layout_margin="10dp"
-        android:id="@+id/learningVideo">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Video"
-            android:textSize="@dimen/_28font_mdp"
-            android:textColor="@color/black"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_220mdp"
+            android:layout_margin="@dimen/_20mdp"
+            app:cardBackgroundColor="#FFEBF7"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/videotext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Video"
+                    android:fontFamily="@font/autour_one"
+                    android:textColor="#A75284"
+                    android:textSize="@dimen/_32font_mdp" />
+
+                <com.smb.glowbutton.GlowButton
+                    android:id="@+id/learningVideoID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/videotext"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:gb_backgroundColor="#FFE600"
+                    app:gb_cornerRadius="15dp"
+                    app:gb_disabledTextColor="#808080"
+                    app:gb_drawableEnd="@drawable/outline_thumb_down_off_alt_20"
+                    app:gb_drawablePadding="50dp"
+                    app:gb_drawableStart="@drawable/outline_thumb_up_24"
+                    app:gb_drawableTint="@color/black"
+                    app:gb_glowAnimationDuration="500"
+                    app:gb_glowColor="#FFE600"
+                    app:gb_rippleAnimationDuration="1500"
+                    app:gb_rippleColor="@color/purple_500"
+                    app:gb_rippleEnabled="true"
+                    app:gb_text="Watch Video"
+                    app:gb_textColor="@color/black"
+                    app:gb_textSize="16dp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3a"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_220mdp"
+            android:layout_margin="@dimen/_20mdp"
+            app:cardBackgroundColor="#C7F2FF"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/videotexst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Quiz"
+                    android:fontFamily="@font/autour_one"
+                    android:textColor="#40548D"
+                    android:textSize="@dimen/_32font_mdp" />
+
+                <com.smb.glowbutton.GlowButton
+                    android:id="@+id/learningQuizID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/videotexst"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="@dimen/_8mdp"
+                    app:gb_backgroundColor="#FFE600"
+                    app:gb_cornerRadius="15dp"
+                    app:gb_disabledTextColor="#808080"
+                    app:gb_drawableEnd="@drawable/outline_thumb_down_off_alt_20"
+                    app:gb_drawablePadding="50dp"
+                    app:gb_drawableStart="@drawable/outline_thumb_up_24"
+                    app:gb_drawableTint="@color/black"
+                    app:gb_glowAnimationDuration="500"
+                    app:gb_glowColor="#FFE600"
+                    app:gb_rippleAnimationDuration="1500"
+                    app:gb_rippleColor="@color/purple_500"
+                    app:gb_rippleEnabled="true"
+                    app:gb_text="Play Quiz"
+                    app:gb_textColor="@color/black"
+                    app:gb_textSize="16dp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_250mdp"
-        app:cardElevation="5dp"
-        android:layout_margin="10dp"
-        android:id="@+id/quiz"
-        android:layout_below="@id/learningVideo">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Quiz"
-            android:textSize="@dimen/_28font_mdp"
-            android:textColor="@color/black"/>
-
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 
 
-
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

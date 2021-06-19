@@ -8,13 +8,19 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimationStudio"
         tools:replace="android:icon">
-        <activity android:name=".Quiz_Activity"></activity>
+
+        <activity android:name="com.facebook.ads.AudienceNetworkActivity" android:hardwareAccelerated="true"/>
+        <activity android:name=".LearningVideoActivity"/>
+        <activity android:name=".Splash_Screen"></activity>
+        <activity android:name=".PlayListPlayer" />
+        <activity android:name=".Quiz_Activity" />
         <activity
             android:name=".PlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|layoutDirection" />
