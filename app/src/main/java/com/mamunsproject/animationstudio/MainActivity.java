@@ -23,10 +23,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
 import com.facebook.ads.AudienceNetworkAds;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
@@ -60,6 +63,7 @@ public class MainActivity extends AppCompatActivity{
 
     Toolbar toolbar;
     BubbleNavigationConstraintView bubbleNavigationConstraintView;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,8 +121,7 @@ public class MainActivity extends AppCompatActivity{
 //===============================================FB BANNER AD============================================
 
 
-/*
-        adView = new AdView(this, "761984221190315_761984364523634", AdSize.BANNER_HEIGHT_50);
+        adView = new AdView(this, "4573092826051762_4599100033451041", AdSize.BANNER_HEIGHT_50);
         LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
 
         // Add the ad view to your activity layout
@@ -127,7 +130,6 @@ public class MainActivity extends AppCompatActivity{
         // Request an ad
         adView.loadAd();
 
-*/
 
 //===============================================FB BANNER AD============================================
 
@@ -199,7 +201,7 @@ public class MainActivity extends AppCompatActivity{
             public boolean onNavigationItemSelected(final MenuItem item) {
                 Toast.makeText(getApplicationContext(), item.getTitle() + " Selected", Toast.LENGTH_SHORT).show();
 
-                if (item.getItemId()==0) {
+                if (item.getItemId()==R.id.nav_home) {
                     startActivity(new Intent(getApplicationContext(),PlayListPlayer.class));
                 }
                 drawer.closeDrawers();
@@ -209,6 +211,12 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
 
 }

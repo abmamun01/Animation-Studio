@@ -50,7 +50,7 @@
                 android:maxLines="2"
                 android:text="Best Of Animation ?"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14font_mdp" />
+                android:textSize="@dimen/_13font_mdp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -58,10 +58,10 @@
     <com.facebook.ads.NativeAdLayout
         android:id="@+id/native_ad_container"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="4dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView4" />

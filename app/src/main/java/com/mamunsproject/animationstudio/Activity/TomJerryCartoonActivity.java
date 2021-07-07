@@ -56,7 +56,7 @@ public class TomJerryCartoonActivity extends AppCompatActivity {
 
 
         DocumentReference documentReference=firebaseFirestore.
-                collection("CategoryCartoon").document("arabicCartoon");
+                collection("CategoryCartoon").document("tomjerryCartoon");
 
 
         documentReference

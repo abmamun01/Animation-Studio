@@ -44,7 +44,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         //===============================================FB INTERSTITIAL AD============================================
 
-        interstitialAd = new InterstitialAd(getApplicationContext(), "CAROUSEL_IMG_SQUARE_LINK#4573092826051762_4573609762666735");
+        interstitialAd = new InterstitialAd(getApplicationContext(), "4573092826051762_4573609762666735");
 
 
         InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
@@ -63,7 +63,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
             @Override
             public void onError(Ad ad, AdError adError) {
                 // Ad error callback
-                Log.e("TAG", "Interstitial ad failed to load: " + adError.getErrorMessage());
+                Log.e("TAG", "Interstitial ad failed to load: " + adError.getErrorMessage() +   adError.getErrorCode());
             }
 
             @Override

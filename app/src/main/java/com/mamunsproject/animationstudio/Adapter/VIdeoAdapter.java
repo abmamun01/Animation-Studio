@@ -68,7 +68,7 @@ public class VIdeoAdapter extends RecyclerView.Adapter<VIdeoAdapter.VideoHolder>
         AudienceNetworkAds.initialize(context);
 
 
-        nativeAd = new NativeAd(context, "CAROUSEL_IMG_SQUARE_LINK#4573092826051762_4573094539384924");
+        nativeAd = new NativeAd(context, "4573092826051762_4573094539384924");
 
         NativeAdListener nativeAdListener = new NativeAdListener() {
             @Override

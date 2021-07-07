@@ -56,7 +56,7 @@ public class OggyCartoonActivity extends AppCompatActivity {
 
 
         DocumentReference documentReference=firebaseFirestore.
-                collection("CategoryCartoon").document("arabicCartoon");
+                collection("CategoryCartoon").document("oggyCartoon");
 
 
         documentReference

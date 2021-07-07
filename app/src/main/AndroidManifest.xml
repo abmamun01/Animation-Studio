@@ -9,12 +9,15 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/animation_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/animation_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimationStudio"
-        tools:replace="android:icon">
+        tools:replace="android:icon"
+        android:name=".OneSignalNotification"
+
+        >
         <activity android:name=".Activity.TomJerryCartoonActivity"/>
         <activity android:name=".Activity.OggyCartoonActivity" />
         <activity android:name=".Activity.ChottaBheemCartoonActivity" />

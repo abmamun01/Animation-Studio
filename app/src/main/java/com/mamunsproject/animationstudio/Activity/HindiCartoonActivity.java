@@ -58,7 +58,7 @@ public class HindiCartoonActivity extends AppCompatActivity {
 
 
         DocumentReference documentReference=firebaseFirestore.
-                collection("CategoryCartoon").document("arabicCartoon");
+                collection("CategoryCartoon").document("hindiCartoon");
 
 
         documentReference

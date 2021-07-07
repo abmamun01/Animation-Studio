@@ -62,7 +62,7 @@ public class AnimationFragment extends Fragment {
 
 
         DocumentReference documentReference = firebaseFirestore.
-                collection("AllCartoonPlayListKey").document("AllCartoonID");
+                collection("AllCartoonPlayListKey").document("Animation_Movie");
 
 
         documentReference
@@ -72,7 +72,7 @@ public class AnimationFragment extends Fragment {
 
                 if (documentSnapshot.exists()) {
 
-                    String key = documentSnapshot.getString("AllCartoonID");
+                    String key = documentSnapshot.getString("animation_movie");
                     getVideos(key);
                     Log.d("TAGD", "onSuccess: " + key);
 

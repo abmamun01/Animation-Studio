@@ -57,7 +57,7 @@ public class LearningVideoActivity extends AppCompatActivity {
 
 
         DocumentReference documentReference=firebaseFirestore.
-                collection("AllCartoonPlayListKey").document("AllCartoonID");
+                collection("AllCartoonPlayListKey").document("LearningVideos");
 
         documentReference
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -66,7 +66,7 @@ public class LearningVideoActivity extends AppCompatActivity {
 
                 if (documentSnapshot.exists()){
 
-                    String key=documentSnapshot.getString( "AllCartoonID");
+                    String key=documentSnapshot.getString( "key");
                     getVideos(key);
                     Log.d("TAGD", "onSuccess: "+key);
 
