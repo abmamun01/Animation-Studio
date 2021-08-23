@@ -1,5 +1,7 @@
 package com.mamunsproject.animationstudio.Fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -17,6 +19,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -57,9 +63,12 @@ public class HomeFragment extends Fragment {
     ArrayList<Video> arrayListVideo;
     ApiInterface apiInterface;
     LottieAnimationView animationView;
-
     public static FirebaseFirestore firebaseFirestore= FirebaseFirestore.getInstance();
     RecyclerView recyclerView;
+    public static AdRequest adRequest;
+    public static InterstitialAd mInterstitialAd;
+    private Context context;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,7 +83,11 @@ public class HomeFragment extends Fragment {
         arrayListVideo = new ArrayList<>();
         vIdeoAdapter = new VIdeoAdapter(getContext(), arrayListVideo);
         recyclerView.setAdapter(vIdeoAdapter);
+        adRequest = new AdRequest.Builder().build();
+        context=getContext();
 
+
+        loadInterstitialAds(getContext());
 
         DocumentReference documentReference=firebaseFirestore.
                 collection("AllCartoonPlayListKey").document("AllCartoonID");
@@ -175,4 +188,166 @@ public class HomeFragment extends Fragment {
 
     }
 
+
+
+
+
+
+    public static void loadInterstitialAds(Context context){
+        //--------------------INTERSTITIAL ADS---------------------
+        InterstitialAd.load(context,"ca-app-pub-3940256099942544/1033173712", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i("MaINAcADSFDFDFSSS", "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i("MaINAcADSFDFDFSSS", loadAdError.getMessage());
+                        mInterstitialAd = null;
+                    }
+                });
+
+
+        //--------------------INTERSTITIAL ADS---------------------
+    }
+    public static void showInterstitial(Context context) {
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show((Activity) context);
+        } else {
+            Log.d("MaINAcADSFDFDFSSS", "The interstitial ad wasn't ready yet.");
+        }
+    }
+
+
 }
+
+
+/*
+        AudienceNetworkAds.initialize(context);
+
+
+        nativeAd = new NativeAd(context, "4573092826051762_4627825243911853");
+
+        NativeAdListener nativeAdListener = new NativeAdListener() {
+            @Override
+            public void onMediaDownloaded(Ad ad) {
+                // Native ad finished downloading all assets
+                Log.e("TAG", "Native ad finished downloading all assets.");
+            }
+
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                // Native ad failed to load
+                Log.e("TAG", "Native ad failed to load: " + adError.getErrorMessage());
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Native ad is loaded and ready to be displayed
+                Log.d("TAG", "Native ad is loaded and ready to be displayed!");
+                if (nativeAd == null || nativeAd != ad) {
+                    return;
+                }
+
+
+                nativeAd.unregisterView();
+
+                // Add the Ad view into the ad container.
+                LayoutInflater inflater = LayoutInflater.from(context);
+                // Inflate the Ad view.  The layout referenced should be the one you created in the last step.
+                adView = (LinearLayout) inflater.inflate(R.layout.native_ad_layout, holder.nativeAdLayout, false);
+                holder.nativeAdLayout.addView(adView);
+
+                // Add the AdOptionsView
+                LinearLayout adChoicesContainer = containerView.findViewById(R.id.ad_choices_container);
+                AdOptionsView adOptionsView = new AdOptionsView(context, nativeAd, holder.nativeAdLayout);
+                adChoicesContainer.removeAllViews();
+                adChoicesContainer.addView(adOptionsView, 0);
+
+                // Create native UI using the ad metadata.
+                MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
+                TextView nativeAdTitle = adView.findViewById(R.id.native_ad_title);
+                MediaView nativeAdMedia = adView.findViewById(R.id.native_ad_media);
+                TextView nativeAdSocialContext = adView.findViewById(R.id.native_ad_social_context);
+                TextView nativeAdBody = adView.findViewById(R.id.native_ad_body);
+                TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
+                Button nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
+
+                // Set the Text.
+                nativeAdTitle.setText(nativeAd.getAdvertiserName());
+                nativeAdBody.setText(nativeAd.getAdBodyText());
+                nativeAdSocialContext.setText(nativeAd.getAdSocialContext());
+                nativeAdCallToAction.setVisibility(nativeAd.hasCallToAction() ? View.VISIBLE : View.INVISIBLE);
+                nativeAdCallToAction.setText(nativeAd.getAdCallToAction());
+                sponsoredLabel.setText(nativeAd.getSponsoredTranslation());
+
+                // Create a list of clickable views
+                List<View> clickableViews = new ArrayList<>();
+                clickableViews.add(nativeAdTitle);
+                clickableViews.add(nativeAdCallToAction);
+
+                // Register the Title and CTA button to listen for clicks.
+                nativeAd.registerViewForInteraction(
+                        adView, nativeAdMedia, nativeAdIcon, clickableViews);
+
+
+
+                holder.nativeAdLayout.setVisibility(View.VISIBLE);
+
+
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Native ad clicked
+                Log.d("TAG", "Native ad clicked!");
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Native ad impression
+                Log.d("TAG", "Native ad impression logged!");
+            }
+        };
+
+        // Request an ad
+        nativeAd.loadAd(
+                nativeAd.buildLoadAdConfig()
+                        .withAdListener(nativeAdListener)
+                        .build());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

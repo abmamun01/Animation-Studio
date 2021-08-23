@@ -27,7 +27,7 @@
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_160mdp"
+                android:layout_height="@dimen/_200mdp"
                 app:sliderAnimationDuration="600"
                 app:sliderAutoCycleDirection="back_and_forth"
                 app:sliderAutoCycleEnabled="true"
@@ -72,7 +72,7 @@
                         android:id="@+id/recyclerMain"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:nestedScrollingEnabled="true"/>
+                        android:nestedScrollingEnabled="true" />
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/animationView"

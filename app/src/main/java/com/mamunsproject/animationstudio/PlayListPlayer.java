@@ -3,7 +3,6 @@ package com.mamunsproject.animationstudio;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.facebook.ads.*;
 import android.app.DownloadManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,8 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.facebook.ads.AudienceNetworkAds;
-import com.facebook.ads.NativeAd;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mamunsproject.animationstudio.Adapter.VIdeoAdapter;
 import com.mamunsproject.animationstudio.Model.ResponseVideo;
@@ -43,8 +40,6 @@ public class PlayListPlayer extends AppCompatActivity {
 
 
     private LinearLayout adView;
-    private NativeAd nativeAd;
-    private NativeAdLayout nativeAdLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

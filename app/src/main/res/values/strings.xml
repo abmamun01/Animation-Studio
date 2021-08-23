@@ -6,6 +6,12 @@
     <string name="navigation_drawer_close">Close</string>
 
 
+    <string name="facebook_banner_ads_id">4573092826051762_4627826037245107</string>
+
+    <string name="facebook_interstitial_ads_id">4573092826051762_4627823727245338</string>
+    <string name="facebook_native_ads_id">4573092826051762_4627825243911853</string>
+
+
     <string name="score">Score 0/8</string>
     <string name="question_number">1/8 Question</string>
 

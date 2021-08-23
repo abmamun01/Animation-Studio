@@ -5,71 +5,61 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.ads.AdSize;
-import com.facebook.ads.AdView;
-import com.facebook.ads.AudienceNetworkAds;
 import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.navigation.NavigationView;
-import com.mamunsproject.animationstudio.Adapter.SliderAdapter;
-import com.mamunsproject.animationstudio.Adapter.VIdeoAdapter;
 import com.mamunsproject.animationstudio.Fragment.AnimationFragment;
 import com.mamunsproject.animationstudio.Fragment.CartoonCategory;
 import com.mamunsproject.animationstudio.Fragment.HomeFragment;
 import com.mamunsproject.animationstudio.Fragment.LearningFragment;
-import com.mamunsproject.animationstudio.Model.ResponseVideo;
-import com.mamunsproject.animationstudio.Model.SliderModel;
-import com.mamunsproject.animationstudio.Model.Video;
-import com.mamunsproject.animationstudio.Retrofit.ApiClient;
-import com.mamunsproject.animationstudio.Retrofit.ApiInterface;
-import com.mamunsproject.animationstudio.Utils.MyConsts;
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity{
 
     Toolbar toolbar;
     BubbleNavigationConstraintView bubbleNavigationConstraintView;
-    private AdView adView;
-
+    private AdView admobBannerAds;
+    public static InterstitialAd admobInterstitialAds;
+    public static AdRequest adRequest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerID, new HomeFragment()).commit();
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+
+
+
+//-------------------BANNER ADS---------------------------
+
+//-------------------BANNER ADS---------------------------
+
 
 
         toolbar = findViewById(R.id.home_toolbar);
@@ -79,49 +69,48 @@ public class MainActivity extends AppCompatActivity{
         checkConnection();
         initNavigationMenu();
 
-        bubbleNavigationConstraintView.setNavigationChangeListener(new BubbleNavigationChangeListener() {
-            @Override
-            public void onNavigationChanged(View view, int position) {
-                //navigation changed, do something
+        bubbleNavigationConstraintView.setNavigationChangeListener((view, position) -> {
+            //navigation changed, do something
 
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
 
-                switch (position) {
-                    case 0:
-                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-                        transaction.replace(R.id.fragmentContainerID, new HomeFragment());
-                        transaction.commit();
-                        break;
+            switch (position) {
+                case 0:
+                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                    transaction.replace(R.id.fragmentContainerID, new HomeFragment());
+                    transaction.commit();
+                    break;
 
-                    case 1:
-                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-                        transaction.replace(R.id.fragmentContainerID, new AnimationFragment());
-                        transaction.commit();
-                        break;
+                case 1:
+                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                    transaction.replace(R.id.fragmentContainerID, new AnimationFragment());
+                    transaction.commit();
+                    break;
 
-                    case 2:
-                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-                        transaction.replace(R.id.fragmentContainerID, new LearningFragment());
-                        transaction.commit();
-                        break;
+                case 2:
+                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                    transaction.replace(R.id.fragmentContainerID, new LearningFragment());
+                    transaction.commit();
+                    break;
 
-                    case 3:
-                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-                        transaction.replace(R.id.fragmentContainerID, new CartoonCategory());
-                        transaction.commit();
-                        break;
+                case 3:
+                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                    transaction.replace(R.id.fragmentContainerID, new CartoonCategory());
+                    transaction.commit();
+                    break;
 
 
-                }
             }
         });
+
 
 
 //===============================================FB BANNER AD============================================
 
 
-        adView = new AdView(this, "4573092826051762_4599100033451041", AdSize.BANNER_HEIGHT_50);
+/*
+        adView = new AdView(this, "4573092826051762_4627826037245107", AdSize.BANNER_HEIGHT_50);
         LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
 
         // Add the ad view to your activity layout
@@ -129,12 +118,19 @@ public class MainActivity extends AppCompatActivity{
 
         // Request an ad
         adView.loadAd();
+*/
 
 
 //===============================================FB BANNER AD============================================
 
 
+//===============================================ADMOB BANNER AD============================================
 
+        admobBannerAds = findViewById(R.id.adView);
+        adRequest = new AdRequest.Builder().build();
+        admobBannerAds.loadAd(adRequest);
+
+//===============================================ADMOB BANNER AD============================================
 
 
     }
@@ -211,12 +207,36 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    @Override
-    protected void onDestroy() {
-        if (adView != null) {
-            adView.destroy();
-        }
-        super.onDestroy();
-    }
 
+    public static void loadInterstitialAds(Context context){
+        //--------------------INTERSTITIAL ADS---------------------
+        InterstitialAd.load(context,"ca-app-pub-1661720215105754/4691167556", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        admobInterstitialAds = interstitialAd;
+                        Log.i("MaINAcADSSSS", "onAdLoaded");
+
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i("MaINAcADSSSS", loadAdError.getMessage());
+                        admobInterstitialAds = null;
+                    }
+                });
+
+
+        //--------------------INTERSTITIAL ADS---------------------
+    }
+    public static void showInterstitial(Context context) {
+        if (admobInterstitialAds != null) {
+            admobInterstitialAds.show((Activity) context);
+        } else {
+            Log.d("MaINAcADSFDFDFSSS", "The interstitial ad wasn't ready yet.");
+        }
+    }
 }

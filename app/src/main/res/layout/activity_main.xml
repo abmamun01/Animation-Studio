@@ -147,6 +147,7 @@
 
     </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
 
+<!--
         <LinearLayout
             android:id="@+id/banner_container"
             android:layout_width="match_parent"
@@ -156,7 +157,19 @@
             app:layout_constraintBottom_toTopOf="@+id/top_navigation_constraint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+-->
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/top_navigation_constraint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            ads:adSize="LARGE_BANNER"
+            ads:adUnitId="ca-app-pub-1661720215105754/8410920717">
+        </com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
